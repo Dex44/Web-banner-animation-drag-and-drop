@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        
+ function allowDrop(ev) {
+ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    ondrop(ani());
+}
+        
+        
+        
+  function ani(){   
+    document.getElementById('circleshadow').className ='circleshadow';
+      document.getElementById('circle').className ='circle';
+      document.getElementById('centershadow').className ='centershadow';
+      document.getElementById('text').className ='text';
+      document.getElementById('slice').style.display = 'none'; 
+      document.getElementById('click').style.display = 'none';
+
+  }
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheese</title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+</head>
+        
+        <body>         
+            <div class="Home">
+                <div id="circleshadow"></div>
+                <div id="circle"></div>
+                <div class="boy" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="centershadow"></div>
+                <div id="text"></div>
+                <div id="contslice">
+                <img id="slice" src="slice.png" draggable="true" ondragstart="drag(event)" height="80" width="80">
+                </div>
+                <div id="click">Feed Him >>></div>  
+            </div>
+
+        </body>
+</html>
